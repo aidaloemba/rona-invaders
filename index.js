@@ -2,8 +2,9 @@ let $body = document.querySelector("body");
 let $player = document.querySelector("#player");
 let $virus = document.querySelector(".virus");
 let vaccines = [];
+army = [];
 
-
+// Controls
 document.onkeydown = function(event) {
     if (event.keyCode === 37) {
         // Go left
@@ -24,7 +25,26 @@ document.onkeydown = function(event) {
         vaccines.push($syringe);
         
     }
+    if(collisionDetection($virus,$syringe)) alert("You got one!")
 }
+
+// Virus army and vaccines animation
+setInterval(()=> {
+    let $virus = document.createElement("img");
+    $virus.src = "img/microbe_1f9a0.png";
+    $virus.setAttribute("class", "virus");
+    $body.appendChild($virus);
+    $virus.style.left = `${Math.random() * 100}%`;
+
+    army.push($virus);
+
+},1000)
+
+setInterval(()=> {
+    army.forEach(($virus)=> {
+        $virus.style.top = `${$virus.offsetTop + 10}px`;
+    })
+},500)
 
 setInterval(()=> {
     vaccines.forEach(($syringe)=> {
@@ -32,6 +52,7 @@ setInterval(()=> {
     })
 },100)
 
+// Collision detection
 function collisionDetection($dom1,$dom2){
     let item1 = {
         x: $dom1.offsetLeft,
@@ -60,4 +81,12 @@ function collisionDetection($dom1,$dom2){
     }
 }
 
-if(collisionDetection($virus,$syringe)) alert("You got one!");
+// Score
+function updateScore() {
+    let score = document.querySelector(".score span").innerHTML
+    let newScore = 0
+    if(collisionDetection($virus,$syringe)) {
+        newScore = score +1
+    }
+    $score.push(newScore)
+}
