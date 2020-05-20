@@ -15,17 +15,17 @@ document.onkeydown = function(event) {
         $player.style.left = `${$player.offsetLeft + 20}px`;
     }
     if (event.keyCode === 32) {
+        // Fire
         let $syringe = document.createElement("img");
         $syringe.src = "img/syringe_1f489.png";
         $syringe.setAttribute("class", "syringe");
         $body.appendChild($syringe);
         $syringe.style.left = `${player.style.left}`;
         $syringe.style.bottom = `-50px`;
-
         vaccines.push($syringe);
-        
+
+        collisionDetection($virus,$syringe)
     }
-    if(collisionDetection($virus,$syringe)) alert("You got one!")
 }
 
 // Virus army and vaccines animation
@@ -74,6 +74,7 @@ function collisionDetection($dom1,$dom2){
           item2.x > item1.x + item1.width   
     )) {
         console.log("Collision!");
+        this.army.splice(i, 1)
         return true;
     } else {
         console.log("No collision!");

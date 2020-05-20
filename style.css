@@ -45,5 +45,6 @@ header img{
     width: 50px;
     position: fixed;
     top: 50px;
+    left: 0;
     z-index: -1;
 }
