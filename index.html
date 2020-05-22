@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>rona invaders v2</title>
+    <title>Rona Invaders</title>
 </head>
 <body>
-    <!-- <div class="startScreen">
-        <p>press up to start the game</p>
-        <p>use the left, right and space keys to control the the lab assistant</p>
+    <!-- <div class="game-intro">
+        <button id="start-button">start game</button>
+        <p>use the left and right keys to control the lab assistant</p>
     </div> -->
+    <div id="game-board">
+        <header>
+            <p class="score">score<br><span>0</span></p>
+            <p><h1>rona<br>invaders</h1></p>
+            <p>lives
+                <br>
+                <span class="life1"><img src="img/female-scientist-type-5_1f469-1f3fe-200d-1f52c.png" alt=""></span>
+                <span class="life2"><img src="img/male-scientist-type-4_1f468-1f3fd-200d-1f52c.png" alt=""></span>
+                <span class="life3"><img src="img/scientist-medium-light-skin-tone_1f9d1-1f3fc-200d-1f52c.png" alt=""></span>
+            </p>
+        </header>
+        <img id="player" src="img/female-scientist-type-5_1f469-1f3fe-200d-1f52c.png">
+    </div>
+  
     
-    <header>
-        <p class="score">score <span>0</span></p>
-        <p><h1>rona invaders</h1></p>
-        <p>lives 
-            <span class="life1"><img src="img/female-scientist-type-5_1f469-1f3fe-200d-1f52c.png" alt=""></span>
-            <span class="life2"><img src="img/male-scientist-type-4_1f468-1f3fd-200d-1f52c.png" alt=""></span>
-            <span class="life3"><img src="img/scientist-medium-light-skin-tone_1f9d1-1f3fc-200d-1f52c.png" alt=""></span>
-        </p>
-    </header>
-
-    <script src="lab-assistant.js"></script>
-    <script src="virus.js"></script>
-    <script src="syringe.js"></script>
-    <script src="game.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

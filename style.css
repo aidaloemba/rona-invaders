@@ -1,13 +1,22 @@
+
 html,
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: large;
+    background-color: black;
 }
 
-#startScreen {
-    position: fixed;
+#game-board {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    height: 600px;
+    width: 800px;
+    overflow: hidden;
+    background-color: white;
 }
 
 header {
@@ -16,23 +25,38 @@ header {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 10px;
-    background-color: white;
-    border-bottom: 1px solid;
+    text-align: center;
     z-index: 0;
+    padding: 5px 10px;
+    color: white;
+    background-color: black;
+    border-bottom: solid 10px black;
 }
 
-header img {
+header img{
     width: 25px;
 }
 
-.virus {
+#player {
+    width: 50px;
     position: fixed;
-}
-
-.labAssistant {
-    position: fixed;
+    left: 50%;
     transform: translate(-50%);
     bottom: 0;
     z-index: -2;
+}
+
+.syringe {
+    height: 50px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+    z-index: -3;
+}
+
+.virus {
+    width: 50px;
+    position: fixed;
+    z-index: -1;
 }
