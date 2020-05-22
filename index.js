@@ -20,9 +20,9 @@ document.onkeydown = function(event) {
         let $syringe = document.createElement("img");
         $syringe.src = "img/syringe_1f489.png";
         $syringe.setAttribute("class", "syringe");
-        $gameBoard.appendChild($syringe);
         $syringe.style.left = `${player.style.left}`;
         $syringe.style.bottom = "-50px";
+        $gameBoard.appendChild($syringe);
         vaccines.push($syringe)
     }
 }
@@ -44,7 +44,7 @@ setInterval(()=> {
     army.forEach(($virus)=> {
         $virus.style.top = `${$virus.offsetTop + 10}px`;
     })
-    removeVirus()
+    // removeVirus()
 },500)
 
 setInterval(()=> {
@@ -52,7 +52,7 @@ setInterval(()=> {
         $syringe.style.bottom = `${window.innerHeight - $syringe.offsetTop + 5}px`;
         syringesVirusesCollision(vaccines, army)
     })
-    removeSyringe()
+    // removeSyringe()
 },100)
 
 // Collision detection
@@ -78,23 +78,23 @@ function syringesVirusesCollision(vaccines, army){
 //     $score.push(newScore)
 // }
 
-// Remove virus and syringe when out of window
-function removeVirus() {
-    army.forEach((virus, index) => {
-        if(virus.style.top >= window.innerHeight) {
-            army.splice(index, 1)
-        }
-    })
-}
+// // Remove virus and syringe when out of window
+// function removeVirus() {
+//     army.forEach((virus, index) => {
+//         if(virus.style.top >= window.innerHeight) {
+//             army.splice(index, 1)
+//         }
+//     })
+// }
 
-function removeSyringe() {
-    vaccines.forEach(($syringe, index) => {
-        // if($syringe.offsetTop <= 0)
-        if($syringe.offsetTop > window.innerHeight) {
-            vaccines.splice(index, 1)
-        }
-    })
-}
+// function removeSyringe() {
+//     vaccines.forEach(($syringe, index) => {
+//         // if($syringe.offsetTop <= 0)
+//         if($syringe.offsetTop > window.innerHeight) {
+//             vaccines.splice(index, 1)
+//         }
+//     })
+// }
 
 // Collision detection global helper
 function isCollide($dom1, $dom2) {
