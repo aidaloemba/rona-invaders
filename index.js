@@ -2,8 +2,9 @@ let $body = document.querySelector("body");
 let $gameBoard = document.querySelector("#game-board");
 let $player = document.querySelector("#player");
 let $virus = document.querySelector(".virus");
+let $syringe = document.querySelector(".syringe");
 let vaccines = [];
-army = [];
+let army = [];
 
 // Controls
 document.onkeydown = function(event) {
@@ -60,7 +61,9 @@ function syringesVirusesCollision(vaccines, army){
     for(let i = 0; i < vaccines.length; i++){
         for(let j = 0; j < army.length; j++){
             if(isCollide(vaccines[i], army[j])) {
-                // add updateScore()
+                return true;
+                console.log("collision");
+                updateScore();
                 // add function "virus disappears"
                 // add function "syringe disappears"
             }
@@ -69,14 +72,14 @@ function syringesVirusesCollision(vaccines, army){
 }
 
 // Score update
-// function updateScore() {
-//     let score = document.querySelector(".score span").innerHTML
-//     let newScore = 0
-//             if(isCollide(vaccines[i], army[j])) {
-//                 newScore = score +1
-//             }
-//     $score.push(newScore)
-// }
+function updateScore() {
+    let score = document.querySelector("#score span").innerHTML
+    let newScore = 0
+            if(isCollide(vaccines[i], army[j]) === true) {
+                newScore = score +1
+            }
+    $score.push(newScore)
+}
 
 // // Remove virus and syringe when out of window
 // function removeVirus() {
@@ -98,6 +101,7 @@ function syringesVirusesCollision(vaccines, army){
 
 // Collision detection global helper
 function isCollide($dom1, $dom2) {
+    debugger
     let sq1 = {
         x: $dom1.offsetLeft,
         y: $dom1.offsetTop,
@@ -115,10 +119,10 @@ function isCollide($dom1, $dom2) {
             sq2.x + sq2.width <= sq1.x ||
             sq2.x >= sq1.x + sq1.width
         )) {
-        console.log("collision");
+        console.log("collision (global helper)");
         return true;
     } else {
-        console.log("no collision");
+        console.log("no collision (gobal helper)");
         return false;
     }
 }
