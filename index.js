@@ -39,13 +39,15 @@ setInterval(()=> {
 
     army.push($virus);
 
-},1000)
+    removeSyringe();
+
+},1500)
 
 setInterval(()=> {
     army.forEach(($virus)=> {
         $virus.style.top = `${$virus.offsetTop + 10}px`;
     })
-    // removeVirus()
+    removeVirus()
 },500)
 
 setInterval(()=> {
@@ -53,7 +55,7 @@ setInterval(()=> {
         $syringe.style.bottom = `${window.innerHeight - $syringe.offsetTop + 5}px`;
         syringesVirusesCollision(vaccines, army)
     })
-    // removeSyringe()
+
 },100)
 
 // Collision detection
@@ -61,11 +63,13 @@ function syringesVirusesCollision(vaccines, army){
     for(let i = 0; i < vaccines.length; i++){
         for(let j = 0; j < army.length; j++){
             if(isCollide(vaccines[i], army[j])) {
-                return true;
-                console.log("collision");
-                updateScore();
-                // add function "virus disappears"
-                // add function "syringe disappears"
+                // Virus disappears on collision
+                army.splice(j, 1);
+
+               // Update score
+                let score = 0;
+                let newScore = score +1;
+                document.querySelector("#score span").innerHTML = newScore;
             }
         }
     }
@@ -75,33 +79,30 @@ function syringesVirusesCollision(vaccines, army){
 function updateScore() {
     let score = document.querySelector("#score span").innerHTML
     let newScore = 0
-            if(isCollide(vaccines[i], army[j]) === true) {
-                newScore = score +1
-            }
-    $score.push(newScore)
+    newScore = score +1
+
+    // $score.push(newScore)
 }
 
 // // Remove virus and syringe when out of window
-// function removeVirus() {
-//     army.forEach((virus, index) => {
-//         if(virus.style.top >= window.innerHeight) {
-//             army.splice(index, 1)
-//         }
-//     })
-// }
+function removeVirus() {
+    army.forEach((virus, index) => {
+        if(virus.offsetTop >= window.innerHeight) {
+            army.splice(index, 1)
+        }
+    })
+}
 
-// function removeSyringe() {
-//     vaccines.forEach(($syringe, index) => {
-//         // if($syringe.offsetTop <= 0)
-//         if($syringe.offsetTop > window.innerHeight) {
-//             vaccines.splice(index, 1)
-//         }
-//     })
-// }
+function removeSyringe() {
+    vaccines.forEach((syringe, index) => {
+        if(syringe.offsetTop <= window.innerHeight) {
+            vaccines.splice(index, 1)
+        }
+    })
+}
 
 // Collision detection global helper
 function isCollide($dom1, $dom2) {
-    debugger
     let sq1 = {
         x: $dom1.offsetLeft,
         y: $dom1.offsetTop,
