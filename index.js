@@ -5,6 +5,7 @@ let $virus = document.querySelector(".virus");
 let $syringe = document.querySelector(".syringe");
 let vaccines = [];
 let army = [];
+let score = 0;
 
 // Controls
 document.onkeydown = function(event) {
@@ -25,6 +26,7 @@ document.onkeydown = function(event) {
         $syringe.style.bottom = "-50px";
         $gameBoard.appendChild($syringe);
         vaccines.push($syringe)
+
     }
 }
 
@@ -35,11 +37,11 @@ setInterval(()=> {
     $virus.setAttribute("class", "virus");
     $gameBoard.appendChild($virus); 
     $virus.style.left = `${Math.floor(Math.random() * 100)}%`;
-    $virus.style.top = "50px"
+    $virus.style.top = "100px"
 
     army.push($virus);
 
-    removeSyringe();
+    // removeSyringe();
 
 },1500)
 
@@ -64,14 +66,12 @@ function syringesVirusesCollision(vaccines, army){
         for(let j = 0; j < army.length; j++){
             if(isCollide(vaccines[i], army[j])) {
                 // Virus disappears on collision
+                $gameBoard.removeChild(army[j])
                 army.splice(j, 1);
-                document.querySelector(".virus").innerHTML = "";
                 
-
                // Update score
-                let score = 0;
-                let newScore = score +1;
-                document.querySelector("#score span").innerHTML = newScore;
+                score += 1
+                document.querySelector("#score span").innerHTML = score;
             }
         }
     }
