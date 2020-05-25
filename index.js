@@ -65,6 +65,8 @@ function syringesVirusesCollision(vaccines, army){
             if(isCollide(vaccines[i], army[j])) {
                 // Virus disappears on collision
                 army.splice(j, 1);
+                document.querySelector(".virus").innerHTML = "";
+                
 
                // Update score
                 let score = 0;
@@ -73,15 +75,6 @@ function syringesVirusesCollision(vaccines, army){
             }
         }
     }
-}
-
-// Score update
-function updateScore() {
-    let score = document.querySelector("#score span").innerHTML
-    let newScore = 0
-    newScore = score +1
-
-    // $score.push(newScore)
 }
 
 // // Remove virus and syringe when out of window
